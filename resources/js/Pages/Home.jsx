@@ -126,6 +126,12 @@ export default function Home() {
                             Risk assessments and security audits.
                         </div>
                         <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                            Web development and modern frontend builds.
+                        </div>
+                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                            Software engineering and system design.
+                        </div>
+                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
                             Linux forensic environments and tooling.
                         </div>
                     </div>
