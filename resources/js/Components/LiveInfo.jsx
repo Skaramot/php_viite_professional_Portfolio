@@ -31,7 +31,7 @@ const WEATHER_CODES = {
     99: 'Thunderstorm with heavy hail',
 };
 
-export default function LiveInfo() {
+export default function LiveInfo({ className = '' }) {
     const [now, setNow] = useState(new Date());
     const [weather, setWeather] = useState({ status: 'loading' });
 
@@ -99,17 +99,17 @@ export default function LiveInfo() {
     }, [now]);
 
     return (
-        <div className="space-y-6">
-            <div className="space-y-3 rounded-2xl border border-white/20 bg-white/70 p-4 text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
-                <p className="text-xs uppercase text-amber-700 dark:text-amber-200">Current Time</p>
-                <p className="text-2xl font-semibold text-slate-900 dark:text-white">
+        <div className={`space-y-4 ${className}`}>
+            <div className="space-y-3 rounded-2xl border border-white/20 bg-white/70 p-3 text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
+                <p className="text-[11px] uppercase text-amber-700 dark:text-amber-200">Current Time</p>
+                <p className="text-xl font-semibold text-slate-900 dark:text-white">
                     {now.toLocaleTimeString()}
                 </p>
-                <p className="text-sm text-slate-500 dark:text-slate-300">
+                <p className="text-xs text-slate-500 dark:text-slate-300">
                     {now.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
                 </p>
-                <div className="mt-3 rounded-xl border border-white/15 bg-white/60 p-4 text-sm dark:border-white/10 dark:bg-slate-900/50">
-                    <p className="text-xs uppercase text-amber-700 dark:text-amber-200">Weather</p>
+                <div className="mt-3 rounded-xl border border-white/15 bg-white/60 p-3 text-xs dark:border-white/10 dark:bg-slate-900/50">
+                    <p className="text-[11px] uppercase text-amber-700 dark:text-amber-200">Weather</p>
                     {weather.status === 'loading' && (
                         <p className="mt-2 text-slate-500 dark:text-slate-300">Loading weather...</p>
                     )}
@@ -121,25 +121,28 @@ export default function LiveInfo() {
                     {weather.status === 'ready' && (
                         <div className="mt-2 space-y-1 text-slate-700 dark:text-slate-200">
                             <p>{WEATHER_CODES[weather.code] || 'Current conditions'}</p>
-                            <p>{weather.temperature}°C · Wind {weather.wind} km/h</p>
+                            <p>
+                                {weather.temperature}
+                                {'\u00B0'}C · Wind {weather.wind} km/h
+                            </p>
                         </div>
                     )}
                 </div>
             </div>
 
-            <div className="rounded-2xl border border-white/20 bg-white/70 p-4 shadow-sm dark:border-white/10 dark:bg-slate-900/60">
-                <p className="text-xs uppercase text-amber-700 dark:text-amber-200">Calendar</p>
+            <div className="rounded-2xl border border-white/20 bg-white/70 p-3 shadow-sm dark:border-white/10 dark:bg-slate-900/60">
+                <p className="text-[11px] uppercase text-amber-700 dark:text-amber-200">Calendar</p>
                 <div className="mt-2 flex items-center justify-between">
-                    <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    <p className="text-base font-semibold text-slate-900 dark:text-white">
                         {calendar.monthLabel}
                     </p>
                 </div>
-                <div className="mt-4 grid grid-cols-7 gap-2 text-center text-xs uppercase text-slate-400">
+                <div className="mt-3 grid grid-cols-7 gap-1 text-center text-[10px] uppercase text-slate-400">
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
                         <span key={day}>{day}</span>
                     ))}
                 </div>
-                <div className="mt-2 grid grid-cols-7 gap-2 text-center text-sm text-slate-700 dark:text-slate-200">
+                <div className="mt-2 grid grid-cols-7 gap-1 text-center text-xs text-slate-700 dark:text-slate-200">
                     {calendar.cells.map((day, index) => {
                         const isToday =
                             day === now.getDate() &&
@@ -148,7 +151,7 @@ export default function LiveInfo() {
                         return (
                             <span
                                 key={`${day ?? 'empty'}-${index}`}
-                                className={`flex h-8 items-center justify-center rounded-full ${
+                                className={`flex h-7 items-center justify-center rounded-full ${
                                     day
                                         ? isToday
                                             ? 'bg-amber-400 text-amber-950'
