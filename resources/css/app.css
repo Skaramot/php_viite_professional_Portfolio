@@ -83,4 +83,40 @@
         transform: translateY(-1px);
         filter: drop-shadow(0 10px 18px rgba(245, 158, 11, 0.25));
     }
+
+    @keyframes bg-drift {
+        0% {
+            transform: scale(1) translate3d(0, 0, 0);
+            filter: saturate(1);
+        }
+        50% {
+            transform: scale(1.03) translate3d(-1.5%, -1%, 0);
+            filter: saturate(1.05);
+        }
+        100% {
+            transform: scale(1) translate3d(0, 0, 0);
+            filter: saturate(1);
+        }
+    }
+
+    .animate-bg-drift {
+        animation: bg-drift 18s ease-in-out infinite;
+        transform-origin: center;
+        will-change: transform, filter;
+    }
+
+    @keyframes caret {
+        0%,
+        100% {
+            border-color: transparent;
+        }
+        50% {
+            border-color: currentColor;
+        }
+    }
+
+    .typing-caret {
+        border-right: 2px solid;
+        animation: caret 0.8s step-end infinite;
+    }
 }

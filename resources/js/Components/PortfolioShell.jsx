@@ -38,7 +38,7 @@ export default function PortfolioShell({ title, children }) {
             <Head title={title} />
             <div className="relative min-h-screen overflow-hidden text-slate-900 dark:text-slate-100 cursor-soft">
                 <div
-                    className="absolute inset-0 -z-20 bg-cover bg-center"
+                    className="absolute inset-0 -z-20 bg-cover bg-center animate-bg-drift"
                     style={{ backgroundImage: "url('/images/portfolio-bg.jpg')" }}
                 />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-slate-900/10 to-black/35 dark:from-black/55 dark:via-slate-900/30 dark:to-black/65" />
