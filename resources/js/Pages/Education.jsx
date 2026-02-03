@@ -5,12 +5,16 @@ import { education } from '@/data/profile';
 export default function Education() {
     return (
         <PortfolioShell title="Education | Karabo Motlaleselelo">
-            <div className="grid gap-8 lg:gap-10">
+            <div className="flex flex-col gap-8 lg:gap-10">
                 {education.map((item, index) => (
                     <SectionCard
                         key={item.degree}
                         title={item.degree}
-                        className={`animate-float-in ${index % 2 === 0 ? 'lg:translate-x-5' : 'lg:-translate-x-3'}`}
+                        className={`animate-float-in ${
+                            index % 2 === 0
+                                ? 'lg:translate-x-8 lg:self-start lg:max-w-3xl'
+                                : 'lg:-translate-x-6 lg:self-end lg:max-w-3xl'
+                        }`}
                         style={{ animationDelay: `${index * 120}ms` }}
                     >
                         <p className="text-sm text-slate-600 dark:text-slate-300">

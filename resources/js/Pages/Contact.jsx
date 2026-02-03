@@ -5,10 +5,10 @@ import { profile, references } from '@/data/profile';
 export default function Contact() {
     return (
         <PortfolioShell title="Contact | Karabo Motlaleselelo">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className="flex flex-col gap-8 lg:gap-10">
                 <SectionCard
                     title="Contact"
-                    className="animate-float-in lg:translate-x-3"
+                    className="animate-float-in lg:translate-x-6 lg:self-start lg:max-w-3xl"
                     style={{ animationDelay: '0ms' }}
                 >
                     <div className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
@@ -33,7 +33,7 @@ export default function Contact() {
 
                 <SectionCard
                     title="References"
-                    className="animate-float-in lg:-translate-x-3"
+                    className="animate-float-in lg:-translate-x-6 lg:self-end lg:max-w-3xl"
                     style={{ animationDelay: '140ms' }}
                 >
                     <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200">

@@ -1,58 +1,19 @@
 import PortfolioShell from '@/Components/PortfolioShell';
 import SectionCard from '@/Components/SectionCard';
 import { projects } from '@/data/profile';
-import { useEffect, useMemo, useState } from 'react';
+import useGithubData from '@/hooks/useGithubData';
 
 export default function Projects() {
-    const [repos, setRepos] = useState([]);
-    const [status, setStatus] = useState('loading');
-    const [error, setError] = useState('');
+    const { repos, status, error } = useGithubData();
 
-    useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
-
-        const loadRepos = async () => {
-            try {
-                const response = await fetch(
-                    'https://api.github.com/users/Skaramot/repos?per_page=100&sort=updated',
-                    { signal: controller.signal },
-                );
-                if (!response.ok) {
-                    throw new Error(`GitHub request failed (${response.status})`);
-                }
-                const data = await response.json();
-                if (isMounted) {
-                    setRepos(Array.isArray(data) ? data : []);
-                    setStatus('ready');
-                }
-            } catch (err) {
-                if (!isMounted || err.name === 'AbortError') return;
-                setStatus('error');
-                setError('Unable to load GitHub repositories right now.');
-            }
-        };
-
-        loadRepos();
-
-        return () => {
-            isMounted = false;
-            controller.abort();
-        };
-    }, []);
-
-    const displayedRepos = useMemo(() => {
-        return repos
-            .filter((repo) => !repo.fork)
-            .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-    }, [repos]);
+    const displayedRepos = [...repos].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
     return (
         <PortfolioShell title="Projects | Karabo Motlaleselelo">
-            <div className="grid gap-8 lg:gap-10">
+            <div className="flex flex-col gap-8 lg:gap-10">
                 <SectionCard
                     title="Featured Initiatives"
-                    className="animate-float-in lg:-translate-x-4"
+                    className="animate-float-in lg:-translate-x-6 lg:self-start lg:max-w-4xl"
                     style={{ animationDelay: '0ms' }}
                 >
                     <div className="grid gap-6">
@@ -73,7 +34,7 @@ export default function Projects() {
 
                 <SectionCard
                     title="GitHub Repositories"
-                    className="animate-float-in lg:translate-x-4"
+                    className="animate-float-in lg:translate-x-6 lg:self-end lg:max-w-5xl"
                     style={{ animationDelay: '140ms' }}
                 >
                     {status === 'loading' && (
@@ -85,7 +46,7 @@ export default function Projects() {
                         <p className="text-sm text-rose-600 dark:text-rose-300">{error}</p>
                     )}
                     {status === 'ready' && (
-                        <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="flex flex-col gap-4">
                             {displayedRepos.map((repo) => (
                                 <article
                                     key={repo.id}

@@ -5,17 +5,17 @@ import { experience } from '@/data/profile';
 export default function Experience() {
     return (
         <PortfolioShell title="Experience | Karabo Motlaleselelo">
-            <div className="grid gap-8 lg:gap-10">
+            <div className="flex flex-col gap-8 lg:gap-10">
                 {experience.map((item, index) => (
                     <SectionCard
                         key={item.role}
                         title={item.role}
                         className={`animate-float-in ${
                             index % 3 === 0
-                                ? 'lg:translate-x-6'
+                                ? 'lg:translate-x-8 lg:self-start lg:max-w-3xl'
                                 : index % 3 === 1
-                                  ? 'lg:-translate-x-4'
-                                  : 'lg:translate-x-2'
+                                  ? 'lg:-translate-x-6 lg:self-end lg:max-w-3xl'
+                                  : 'lg:translate-x-4 lg:self-start lg:max-w-2xl'
                         }`}
                         style={{ animationDelay: `${index * 120}ms` }}
                     >

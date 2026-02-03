@@ -49,4 +49,38 @@
         animation: menu-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         transform-origin: top right;
     }
+
+    @keyframes gradient-drift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .animate-gradient-drift {
+        animation: gradient-drift 14s ease-in-out infinite;
+        background-size: 200% 200%;
+    }
+
+    .cursor-soft {
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='7' fill='rgba(245,158,11,0.35)' stroke='rgba(245,158,11,0.8)' stroke-width='1'/></svg>") 12 12,
+            auto;
+    }
+
+    .cursor-soft a,
+    .cursor-soft button {
+        cursor: inherit;
+        transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .cursor-soft a:hover,
+    .cursor-soft button:hover {
+        transform: translateY(-1px);
+        filter: drop-shadow(0 10px 18px rgba(245, 158, 11, 0.25));
+    }
 }
