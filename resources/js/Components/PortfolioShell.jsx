@@ -8,6 +8,7 @@ const navItems = [
     { label: 'Skills', route: 'skills' },
     { label: 'Projects', route: 'projects' },
     { label: 'Publication', route: 'publication' },
+    { label: 'Blog', route: 'blog.index' },
     { label: 'Contact', route: 'contact' },
 ];
 
@@ -81,7 +82,7 @@ export default function PortfolioShell({ title, children }) {
                 {isMenuOpen && (
                     <div className="mx-auto mt-6 max-w-6xl px-6">
                         <nav className="animate-float-in rounded-3xl border border-white/20 bg-white/85 p-4 shadow-[0_22px_60px_-32px_rgba(20,10,5,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80">
-                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                                 {navItems.map((item, index) => {
                                     const href = route(item.route);
                                     const isActive = activePath === href;

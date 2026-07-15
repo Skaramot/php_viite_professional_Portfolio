@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReactionController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BlogPostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -32,9 +37,21 @@ Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');
 
+// Public Blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
+Route::post('/blog/{post}/comments', [CommentController::class, 'store'])->name('blog.comments.store');
+Route::post('/blog/{post}/reactions', [ReactionController::class, 'toggle'])->name('blog.reactions.toggle');
+
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Admin
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('posts', BlogPostController::class)->except(['show']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
