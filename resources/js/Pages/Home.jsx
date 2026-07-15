@@ -46,29 +46,26 @@ export default function Home() {
     return (
         <PortfolioShell title="Home | Karabo Motlaleselelo">
             <section className="relative flex min-h-[70vh] flex-col justify-center gap-10 pb-6 pt-10 lg:min-h-[78vh]">
-                <div className="absolute -left-20 top-10 h-48 w-48 rounded-full bg-amber-300/30 blur-3xl animate-soft-float" />
-                <div className="absolute right-0 top-24 h-56 w-56 rounded-full bg-rose-300/25 blur-3xl animate-soft-float" />
-
                 <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
                     <div className="space-y-6">
-                        <p className="text-xs uppercase tracking-[0.4em] text-amber-200/90">
+                        <p className="text-xs uppercase tracking-[0.4em] text-amber-600 dark:text-amber-500">
                             <span className="typing-caret">{tagText}</span>
                         </p>
-                        <h1 className="text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
+                        <h1 className="text-4xl font-semibold leading-tight text-slate-900 dark:text-slate-50 md:text-5xl lg:text-6xl">
                             {profile.name}
                         </h1>
-                        <p className="text-lg text-white/80">{profile.title}</p>
-                        <p className="text-sm text-white/60">{profile.location}</p>
+                        <p className="text-lg text-slate-700 dark:text-slate-300">{profile.title}</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">{profile.location}</p>
                         <div className="flex flex-wrap gap-3 pt-4">
                             <a
                                 href={route('projects')}
-                                className="rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-500/30 transition hover:-translate-y-0.5 hover:bg-amber-300"
+                                className="rounded-full bg-amber-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-amber-500/20 transition hover:-translate-y-0.5 hover:bg-amber-400"
                             >
                                 View Projects
                             </a>
                             <a
                                 href={route('contact')}
-                                className="rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-white/20"
+                                className="rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 dark:hover:bg-slate-700"
                             >
                                 Contact Me
                             </a>
@@ -79,13 +76,13 @@ export default function Home() {
                         <div className="animate-float-in">
                             <LiveInfo />
                         </div>
-                        <div className="animate-float-in space-y-4 rounded-3xl border border-white/30 bg-white/70 p-6 shadow-[0_24px_60px_-32px_rgba(20,10,5,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/65">
-                            <p className="text-xs uppercase text-amber-700 dark:text-amber-200/80">Profile</p>
+                        <div className="animate-float-in space-y-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-6">
+                            <p className="text-xs uppercase font-semibold text-slate-500 dark:text-slate-400">Profile</p>
                             <p className="text-sm text-slate-700 dark:text-slate-200">{profile.summary}</p>
-                            <div className="rounded-2xl border border-white/20 bg-white/70 p-4 text-sm text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
+                            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-700/50 dark:text-slate-200">
                                 <p className="text-slate-700 dark:text-slate-200">{profile.phone}</p>
                                 <a
-                                    className="text-amber-800 underline decoration-amber-300 underline-offset-4 hover:text-amber-900 dark:text-amber-200 dark:decoration-amber-500"
+                                    className="text-amber-600 underline decoration-amber-300 underline-offset-4 hover:text-amber-700 dark:text-amber-400 dark:decoration-amber-500"
                                     href={`mailto:${profile.email}`}
                                 >
                                     {profile.email}
@@ -114,22 +111,22 @@ export default function Home() {
                     style={{ animationDelay: '240ms' }}
                 >
                     <div className="grid gap-4 text-sm text-slate-700 dark:text-slate-200 sm:grid-cols-2">
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Security monitoring and incident response.
                         </div>
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Digital forensics and evidence handling.
                         </div>
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Risk assessments and security audits.
                         </div>
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Web development and modern frontend builds.
                         </div>
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Software engineering and system design.
                         </div>
-                        <div className="rounded-xl border border-amber-100/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-slate-900/60">
+                        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-700/30">
                             Linux forensic environments and tooling.
                         </div>
                     </div>
@@ -150,7 +147,7 @@ export default function Home() {
                                 {topLanguages.map((lang) => (
                                     <span
                                         key={lang.name}
-                                        className="rounded-full border border-white/20 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200"
+                                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 shadow-sm"
                                     >
                                         {lang.name}
                                     </span>
@@ -161,7 +158,7 @@ export default function Home() {
                             </p>
                             <a
                                 href={route('skills')}
-                                className="inline-flex text-amber-800 underline decoration-amber-300 underline-offset-4 dark:text-amber-200 dark:decoration-amber-500"
+                                className="inline-flex text-amber-600 underline decoration-amber-300 underline-offset-4 hover:text-amber-700 dark:text-amber-400 dark:decoration-amber-500"
                             >
                                 View all GitHub skills
                             </a>

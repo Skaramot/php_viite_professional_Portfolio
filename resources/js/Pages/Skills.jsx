@@ -73,7 +73,7 @@ export default function Skills() {
                                 {languages.map((lang) => (
                                     <span
                                         key={lang.name}
-                                        className="rounded-full border border-white/20 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200"
+                                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 shadow-sm"
                                     >
                                         {lang.name} ({lang.percent.toFixed(1)}%)
                                     </span>

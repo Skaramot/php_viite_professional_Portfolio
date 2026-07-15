@@ -37,65 +37,81 @@ export default function PortfolioShell({ title, children }) {
     return (
         <>
             <Head title={title} />
-            <div className="relative min-h-screen overflow-hidden text-slate-900 dark:text-slate-100 cursor-soft">
-                <div
-                    className="absolute inset-0 -z-20 bg-cover bg-center animate-bg-drift"
-                    style={{ backgroundImage: "url('/images/portfolio-bg.jpg')" }}
-                />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-slate-900/10 to-black/35 dark:from-black/55 dark:via-slate-900/30 dark:to-black/65" />
-                <div className="absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(255,180,105,0.35),rgba(30,41,59,0.25),rgba(255,140,120,0.25))] mix-blend-multiply animate-gradient-drift dark:bg-[linear-gradient(120deg,rgba(251,191,36,0.18),rgba(15,23,42,0.5),rgba(244,114,182,0.18))]" />
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,214,170,0.16),transparent_60%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,214,170,0.12),transparent_60%)]" />
-
-                <header className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-10">
-                    <Link
-                        href={route('home')}
-                        className="rounded-full border border-white/20 bg-white/75 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-amber-900 shadow-sm backdrop-blur transition hover:shadow-md dark:border-white/10 dark:bg-slate-900/50 dark:text-amber-200"
-                    >
-                        <span className="font-mono">&lt;/skaramot&gt;</span>
-                    </Link>
-
-                    <div className="flex items-center gap-3">
-                        <button
-                            type="button"
-                            onClick={toggleTheme}
-                            className="rounded-full border border-white/20 bg-white/80 px-4 py-2 text-sm font-semibold text-amber-900 shadow-sm backdrop-blur transition hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:text-amber-200"
+            <div className="min-h-screen bg-slate-100 dark:bg-[#0f172a] text-slate-800 dark:text-slate-100 font-sans flex flex-col">
+                <header className="bg-white/80 backdrop-blur dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky top-0 z-50">
+                    <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+                        <Link
+                            href={route('home')}
+                            className="font-mono text-amber-500 font-bold tracking-wider hover:text-amber-600 transition"
                         >
-                            {isDark ? 'Light mode' : 'Dark mode'}
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setIsMenuOpen((prev) => !prev)}
-                            className="flex items-center gap-2 rounded-full border border-white/20 bg-white/80 px-4 py-2 text-sm font-semibold text-amber-900 shadow-sm backdrop-blur transition hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:text-amber-200"
-                            aria-expanded={isMenuOpen}
-                            aria-label="Toggle navigation"
-                        >
-                            <span className="flex h-3 w-4 flex-col justify-between">
-                                <span className="h-0.5 w-full rounded bg-current" />
-                                <span className="h-0.5 w-full rounded bg-current" />
-                                <span className="h-0.5 w-full rounded bg-current" />
-                            </span>
-                            Menu
-                        </button>
+                            &lt;/skaramot&gt;
+                        </Link>
+
+                        <div className="hidden lg:flex items-center gap-6">
+                            {navItems.map((item) => {
+                                const href = route(item.route);
+                                const isActive = activePath === href;
+                                return (
+                                    <Link
+                                        key={item.route}
+                                        href={href}
+                                        className={`text-sm font-medium transition ${
+                                            isActive
+                                                ? 'text-amber-500'
+                                                : 'text-slate-600 hover:text-amber-500 dark:text-slate-400 dark:hover:text-amber-400'
+                                        }`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                            <button
+                                type="button"
+                                onClick={toggleTheme}
+                                className="text-slate-500 hover:text-amber-500 dark:text-slate-400 dark:hover:text-amber-400 transition"
+                                title="Toggle Dark Mode"
+                            >
+                                {isDark ? (
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    </svg>
+                                ) : (
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                    </svg>
+                                )}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setIsMenuOpen((prev) => !prev)}
+                                className="lg:hidden text-slate-500 hover:text-amber-500 dark:text-slate-400 transition"
+                            >
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </header>
-
-                {isMenuOpen && (
-                    <div className="mx-auto mt-6 max-w-6xl px-6">
-                        <nav className="animate-float-in rounded-3xl border border-white/20 bg-white/85 p-4 shadow-[0_22px_60px_-32px_rgba(20,10,5,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80">
-                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                                {navItems.map((item, index) => {
+                    
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <nav className="lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+                            <div className="flex flex-col px-4 py-2">
+                                {navItems.map((item) => {
                                     const href = route(item.route);
                                     const isActive = activePath === href;
                                     return (
                                         <Link
                                             key={item.route}
                                             href={href}
-                                            className={`animate-menu-pop rounded-2xl border px-4 py-3 text-sm font-semibold transition ${
+                                            className={`px-4 py-3 text-sm font-medium transition rounded-lg ${
                                                 isActive
-                                                    ? 'border-amber-300 bg-amber-100/90 text-amber-900 dark:border-amber-500/60 dark:bg-amber-950/70 dark:text-amber-200'
-                                                    : 'border-white/30 bg-white/70 text-slate-800 hover:border-amber-200 hover:text-amber-900 dark:border-white/10 dark:bg-slate-900/50 dark:text-slate-200'
+                                                    ? 'bg-amber-50 dark:bg-amber-900/10 text-amber-500'
+                                                    : 'text-slate-600 hover:bg-slate-50 hover:text-amber-500 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-amber-400'
                                             }`}
-                                            style={{ animationDelay: `${index * 70}ms` }}
                                             onClick={() => setIsMenuOpen(false)}
                                         >
                                             {item.label}
@@ -104,25 +120,24 @@ export default function PortfolioShell({ title, children }) {
                                 })}
                             </div>
                         </nav>
-                    </div>
-                )}
+                    )}
+                </header>
 
-                <main className="mx-auto max-w-6xl px-6 pb-16 pt-8">{children}</main>
-                <footer className="mx-auto max-w-6xl px-6 pb-10 text-xs text-white/70">
-                    Photo by{' '}
-                    <a
-                        className="underline decoration-white/40 underline-offset-4 hover:text-white"
-                        href="https://unsplash.com/@omgitsyeshi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-                    >
-                        Yeshi Kangrang
-                    </a>{' '}
-                    on{' '}
-                    <a
-                        className="underline decoration-white/40 underline-offset-4 hover:text-white"
-                        href="https://unsplash.com/photos/vehicles-traveling-on-road-wTD1-_u8x1g?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-                    >
-                        Unsplash
-                    </a>
+                <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-8">
+                    <div className="animate-float-in">
+                        {children}
+                    </div>
+                </main>
+
+                <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-auto">
+                    <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-sm text-slate-500 dark:text-slate-400">
+                        <div>
+                            &copy; {new Date().getFullYear()} Karabo Motlaleselelo.
+                        </div>
+                        <div className="font-mono text-xs text-slate-400 dark:text-slate-500">
+                            v1.0.0
+                        </div>
+                    </div>
                 </footer>
             </div>
         </>

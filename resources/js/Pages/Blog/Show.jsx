@@ -30,7 +30,7 @@ function CommentForm({ postId }) {
     return (
         <form
             onSubmit={handleComment}
-            className="animate-float-in rounded-2xl border border-white/30 bg-white/70 p-6 shadow-[0_18px_40px_-24px_rgba(20,10,5,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/65"
+            className="animate-float-in rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800"
         >
             <h3 className="mb-5 text-lg font-semibold text-slate-900 dark:text-slate-100">
                 Leave a comment
@@ -48,7 +48,7 @@ function CommentForm({ postId }) {
                     onChange={(e) => setData('author_name', e.target.value)}
                     required
                     placeholder="Your name"
-                    className="w-full rounded-xl border border-white/40 bg-white/60 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm backdrop-blur transition focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-200/50 dark:border-white/10 dark:bg-slate-800/50 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-amber-500/60 dark:focus:ring-amber-500/20"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100 dark:placeholder-slate-500"
                 />
                 {errors.author_name && (
                     <p className="mt-1.5 text-xs text-red-500 dark:text-red-400">{errors.author_name}</p>
@@ -68,7 +68,7 @@ function CommentForm({ postId }) {
                     maxLength={charLimit}
                     rows={4}
                     placeholder="Share your thoughts…"
-                    className="w-full resize-none rounded-xl border border-white/40 bg-white/60 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm backdrop-blur transition focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-200/50 dark:border-white/10 dark:bg-slate-800/50 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-amber-500/60 dark:focus:ring-amber-500/20"
+                    className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 shadow-sm transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-100 dark:placeholder-slate-500"
                 />
                 <div className="mt-1 flex items-center justify-between">
                     {errors.content ? (
@@ -100,7 +100,7 @@ function CommentCard({ comment, index }) {
 
     return (
         <div
-            className="animate-float-in rounded-2xl border border-white/30 bg-white/70 p-5 shadow-[0_8px_24px_-12px_rgba(20,10,5,0.25)] backdrop-blur dark:border-white/10 dark:bg-slate-900/65"
+            className="animate-float-in rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800"
             style={{ animationDelay: `${index * 80}ms` }}
         >
             <div className="mb-3 flex items-center gap-3">
@@ -137,7 +137,7 @@ export default function BlogShow({ post }) {
             <div className="animate-float-in mb-6">
                 <Link
                     href={route('blog.index')}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/60 px-4 py-2 text-sm font-medium text-slate-700 backdrop-blur transition hover:border-amber-200 hover:text-amber-900 dark:border-white/10 dark:bg-slate-900/50 dark:text-slate-300 dark:hover:border-amber-500/40 dark:hover:text-amber-200"
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-amber-200 hover:text-amber-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-amber-500/40 dark:hover:text-amber-400"
                 >
                     <span className="text-base">←</span> Back to Blog
                 </Link>
@@ -145,7 +145,7 @@ export default function BlogShow({ post }) {
 
             <div className="mx-auto max-w-2xl space-y-8">
                 {/* Post card */}
-                <article className="animate-float-in rounded-2xl border border-white/30 bg-white/70 p-0 shadow-[0_18px_40px_-24px_rgba(20,10,5,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/65">
+                <article className="animate-float-in rounded-2xl border border-slate-200 bg-white p-0 shadow-sm dark:border-slate-700 dark:bg-slate-800">
                     {/* Author header */}
                     <div className="flex items-center gap-3 px-8 pt-8 pb-5">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-base font-bold text-white shadow-md ring-2 ring-amber-300/40 dark:ring-amber-500/30">
@@ -181,7 +181,7 @@ export default function BlogShow({ post }) {
                     )}
 
                     {/* Divider */}
-                    <div className="mx-8 border-t border-slate-200/60 dark:border-white/10" />
+                    <div className="mx-8 border-t border-slate-200 dark:border-slate-700" />
 
                     {/* Reaction bar */}
                     <div className="flex flex-wrap items-center gap-2 px-8 py-4">
@@ -196,8 +196,8 @@ export default function BlogShow({ post }) {
                                     onClick={() => toggleReaction(post.id, type)}
                                     className={`flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm font-medium transition-all duration-200 ${
                                         isActive
-                                            ? 'border-amber-300 bg-amber-100/90 text-amber-900 shadow-sm ring-1 ring-amber-200/50 dark:border-amber-500/60 dark:bg-amber-950/70 dark:text-amber-200 dark:ring-amber-500/20'
-                                            : 'border-white/40 bg-white/50 text-slate-600 hover:border-amber-200 hover:bg-amber-50/80 hover:text-amber-800 dark:border-white/10 dark:bg-slate-800/40 dark:text-slate-400 dark:hover:border-amber-500/40 dark:hover:bg-amber-950/40 dark:hover:text-amber-300'
+                                            ? 'border-amber-300 bg-amber-50 text-amber-600 shadow-sm dark:border-amber-500/60 dark:bg-amber-900/20 dark:text-amber-400'
+                                            : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-amber-200 hover:bg-amber-50 hover:text-amber-600 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400 dark:hover:border-amber-500/40 dark:hover:bg-amber-900/10 dark:hover:text-amber-400'
                                     }`}
                                     aria-label={`React with ${type}`}
                                 >
@@ -232,7 +232,7 @@ export default function BlogShow({ post }) {
                         </div>
                     ) : (
                         <div className="animate-float-in py-12 text-center" style={{ animationDelay: '200ms' }}>
-                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/70 shadow-md backdrop-blur dark:border-white/10 dark:bg-slate-900/65">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
                                 <span className="text-3xl">💬</span>
                             </div>
                             <p className="text-sm font-medium text-slate-500 dark:text-slate-400">

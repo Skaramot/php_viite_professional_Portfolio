@@ -50,7 +50,7 @@ export default function Projects() {
                             {displayedRepos.map((repo) => (
                                 <article
                                     key={repo.id}
-                                    className="rounded-2xl border border-white/20 bg-white/70 p-4 text-sm text-slate-700 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200"
+                                    className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-700 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
                                 >
                                     <div className="flex items-start justify-between gap-4">
                                         <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">

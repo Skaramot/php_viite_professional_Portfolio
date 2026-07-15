@@ -39,7 +39,7 @@ export default function AdminLayout({ title, children }) {
     return (
         <>
             <Head title={title} />
-            <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row text-slate-900 dark:text-slate-100 font-sans">
+            <div className="min-h-screen bg-slate-100 dark:bg-slate-900 flex flex-col md:flex-row text-slate-800 dark:text-slate-100 font-sans">
                 {/* Mobile Header */}
                 <div className="md:hidden flex items-center justify-between p-4 bg-slate-900 text-slate-100 shadow-md">
                     <Link href={route('home')} className="font-mono text-amber-500 font-semibold tracking-wider">
